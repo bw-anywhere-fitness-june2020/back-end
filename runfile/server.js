@@ -8,7 +8,6 @@ const classRouter = require('./class-router');
 const usersRouter = require('./users-router');
 
 const server = express();
-
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
