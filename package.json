@@ -4,8 +4,8 @@
   "description": "this it a test",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
     "server": "nodemon index.js",
+    "start": "node index.js",
     "test": "jest --watch --verbose"
   },
   "repository": {
