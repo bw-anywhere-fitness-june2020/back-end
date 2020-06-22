@@ -4,7 +4,7 @@ const Users = require("./users-model");
 
 const restricted = require("./authenticate-middleware");
 
-router.get("/", //restricted, checkdepartment("admin"),
+router.get("/", restricted, checkdepartment("admin"),
  (req, res) => {
   Users.find()
     .then((users) => {
@@ -16,6 +16,7 @@ router.get("/", //restricted, checkdepartment("admin"),
 function checkdepartment(userpermisions) {
   return (req, res, next) => {
     if (req.decodedToken.userpermisions == userpermisions) {
+        console.log(userpermisions)
       next();
     } else {
       res.status(403).json({ message: "You shall not pass! you are wrong department" });
