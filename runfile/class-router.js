@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 const Classes = require("./class-model");
+const authenticate = require('./authenticate-middleware');
 
 router.get("/", (req, res) => {
   Classes.findclass()
