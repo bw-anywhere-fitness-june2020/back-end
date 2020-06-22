@@ -14,12 +14,15 @@ router.get("/", restricted, checkdepartment("admin"),
 });
 
 function checkdepartment(userpermisions) {
+ console.log(userpermisions[0].name)    
   return (req, res, next) => {
-    if (req.decodedToken.userpermisions == userpermisions) {
-        console.log(userpermisions)
+
+     // console.log(req)
+    if (req.decodedToken.userpermisions[0].name == userpermisions) {
+       
       next();
     } else {
-      res.status(403).json({ message: "You shall not pass! you are wrong department" });
+      res.status(403).json({ message: "You shall not pass! you are wrong department1" });
     }
   };
 }
