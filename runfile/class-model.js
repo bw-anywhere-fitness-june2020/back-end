@@ -15,7 +15,7 @@ function findclass(){
         'start_time',
         'duration',
         'intensity_level',
-        'location',
+        'class_location',
         'current_number_of_registered_attendees',
         'max_class_size',
  );

@@ -3,7 +3,9 @@ const router = require("express").Router();
 const Classes = require("./class-model");
 const authenticate = require('./authenticate-middleware');
 
-router.get("/", (req, res) => {
+
+router.get("/", //authenticate, checkdepartment(23412),
+ (req, res) => {
   Classes.findclass()
       .then((classes) => {
         res.status(200).json({ classes, decodedToken: req.decodedToken });
@@ -11,7 +13,8 @@ router.get("/", (req, res) => {
       .catch((err) => res.send(err));
   });
 
-  router.post("/", (req, res) => {
+  router.post("/", authenticate, checkdepartment(23412),
+  (req, res) => {
     Classes.insert(req.body)
         .then(classes => {
             res.status(201).json(classes);
@@ -22,7 +25,8 @@ router.get("/", (req, res) => {
 });
 
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", authenticate, checkdepartment(23412),
+ (req, res) => {
     const { id } = req.params;
     Classes.remove(id)
     .then((classes) => {
@@ -40,7 +44,8 @@ router.delete("/:id", (req, res) => {
       });
   });
 
-  router.put("/:id", (req, res) => {
+  router.put("/:id", //authenticate, checkdepartment(23412),
+   (req, res) => {
     Classes.update(req.params.id, req.body)
       .then(classes => {
         if (classes) {
@@ -57,14 +62,17 @@ router.delete("/:id", (req, res) => {
       });
   });
 
-function checkdepartment(userpermisions) {
-  return (req, res, next) => {
-    if (req.decodedToken.userpermisions == userpermisions) {
-      next();
-    } else {
-      res.status(403).json({ message: "You shall not pass! you are wrong department" });
-    }
-  };
-}
+  function checkdepartment(varabel) {
+   
+    return (req, res, next) => {
+        console.log(req.decodedToken.userpermisions)
+      if (req.decodedToken.userpermisions === varabel) {
+         
+        next();
+      } else {
+        res.status(403).json({ message: "You shall not pass! you are wrong department1" });
+      }
+    };
+  }
 
 module.exports = router;

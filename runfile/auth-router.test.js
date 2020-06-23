@@ -6,7 +6,7 @@ const Users = require("./users-model");
 
 describe("api/auth/", () => {
   const makeuser1 = { username: "steele", password: "helbling" };
-  const makeuser2 = { username: "cole", password: "james" };
+  const makeuser2 = { username: "cole", password: "james", userpermisions:1};
 
   beforeEach(async () => {
     await db("users").truncate();
