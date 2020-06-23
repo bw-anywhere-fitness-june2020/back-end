@@ -25,7 +25,7 @@ exports.up = function (knex) {
         tbl.string("start_time", 128);
         tbl.string("duration", 128);
         tbl.string("intensity_level", 128);
-        tbl.string("location", 128);
+        tbl.string("class_location", 128);
         tbl.integer("current_number_of_registered_attendees");
         tbl.integer("max_class_size");
       }); 

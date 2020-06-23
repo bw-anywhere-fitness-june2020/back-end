@@ -43,6 +43,7 @@ function maketoken(user) {
   const payload = {
     userid: user.id,
     username: user.username,
+    userpermisions: user.userpermisions,
   };
 
   const options = { expiresIn: "1h" };

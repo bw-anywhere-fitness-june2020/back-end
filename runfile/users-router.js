@@ -4,8 +4,9 @@ const Users = require("./users-model");
 
 const restricted = require("./authenticate-middleware");
 
-router.get("/", restricted, checkdepartment("admin"),
+router.get("/", restricted, checkdepartment(23412),
  (req, res) => {
+     console.log(req.decodedToken )
   Users.find()
     .then((users) => {
       res.status(200).json({ users, decodedToken: req.decodedToken });
@@ -13,12 +14,11 @@ router.get("/", restricted, checkdepartment("admin"),
     .catch((err) => res.send(err));
 });
 
-function checkdepartment(userpermisions) {
- console.log(userpermisions[0].name)    
+function checkdepartment(varabel) {
+   
   return (req, res, next) => {
-
-     // console.log(req)
-    if (req.decodedToken.userpermisions[0].name == userpermisions) {
+      console.log(req.decodedToken.userpermisions)
+    if (req.decodedToken.userpermisions === varabel) {
        
       next();
     } else {
