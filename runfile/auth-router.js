@@ -11,6 +11,7 @@ router.post("/register", (req, res) => {
 
   Users.add(user)
     .then((saved) => {
+      console.log(saved)
       const token = maketoken(saved);
       res.status(201).json({ created_user: saved, token: token });
     })
@@ -27,8 +28,12 @@ router.post("/login", (req, res) => {
     .first()
     .then((user) => {
       if (user && bcrypt.compareSync(password, user.password)) {
+        console.log(user)
         const token = maketoken(user);
-        res.status(200).json({ username: user.username, token: token });
+        res.status(200).json({ 
+          username: user.username, 
+          password:user.password, 
+          userpermisions: user.userpermisions, token: token });
       } else {
         res.status(401).json({ message: "login did not work" });
       }
