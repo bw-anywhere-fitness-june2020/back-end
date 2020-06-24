@@ -32,42 +32,42 @@ describe("test class ", () => {
         .then((res) => expect(res.status).toBe(401));
     });
   });
-});
-describe("api/ class", () => {
+// });
+// describe("api/ class", () => {
 
-  const makeclass1 = {       
-    id: 1,
-    classname: "jnkbkl",
-    type: "streching",
-    start_time: "2:00pm",
-    duration: "1 hours",
-    intensity_level: "easy",
-    class_location: "mall",
-    current_number_of_registered_attendees: 1,
-    max_class_size: 20
-};
-  beforeEach(async () => {
-    await db("api/class").truncate();
-  });
+//   const makeclass1 = {       
+//     id: 1,
+//     classname: "jnkbkl",
+//     type: "streching",
+//     start_time: "2:00pm",
+//     duration: "1 hours",
+//     intensity_level: "easy",
+//     class_location: "mall",
+//     current_number_of_registered_attendees: 1,
+//     max_class_size: 20
+// };
+//   beforeEach(async () => {
+//     await db("api/class").truncate();
+//   });
 
-  describe("api post class", () => {
-    it("sends class", async () => {
-      return await request(server)
-        .post("/api/class")
-        .send(makeclass1)
-        .then((res) => {
-          test = expect(res.body.classes.classname).toBe(
-            makeclass1.classname
-          );
-        });
-    });
+//   describe("api post class", () => {
+//     it("sends class", async () => {
+//       return await request(server)
+//         .post("/api/class")
+//         .send(makeclass1)
+//         .then((res) => {
+//           test = expect(res.body.classes.classname).toBe(
+//             makeclass1.classname
+//           );
+//         });
+//     });
 
-    it("sends post", async () => {
-      return await request(server)
-        .post("/api/class")
-        .send(makeclass1)
-        .then((res) => expect(res.status).toBe(201));
-    });
-  });
+//     it("sends post", async () => {
+//       return await request(server)
+//         .post("/api/class")
+//         .send(makeclass1)
+//         .then((res) => expect(res.status).toBe(201));
+//     });
+//   });
 
 })
