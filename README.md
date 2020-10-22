@@ -2,7 +2,7 @@
 
 I created the complete backend for this. You can log in as a User or Admin and you'll be able to create classes if you're an Admin. Admins can also edit class info. If you are a User you can get added to the class if you click to join.
 
-https://github.com/bw-anywhere-fitness-june2020/back-end
+https://front-end-wheat.vercel.app/classes
 
 # Tech Stuff API Endpoints
 
